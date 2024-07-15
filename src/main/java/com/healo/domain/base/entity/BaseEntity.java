@@ -13,13 +13,12 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public class BaseEntity {
 
-    // Entity 가 생성될 때 자동으로 시간이 설정된다.
     @CreatedDate
-    @Column(updatable = false) // 컬럼이 수정되지 않게 막는다.
-    private LocalDateTime createdAt;
+    @Column(updatable = false)
+    private LocalDateTime created_at;
 
-    @LastModifiedDate // Entity가 수정될 때마다 자동으로 시간이 저장된다.
-    private LocalDateTime updatedAt;
+    @LastModifiedDate
+    private LocalDateTime updated_at;
 
     @Enumerated(EnumType.ORDINAL)
     private Status status = Status.ACTIVE;

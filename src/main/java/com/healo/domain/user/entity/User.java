@@ -1,24 +1,54 @@
 package com.healo.domain.user.entity;
 
 import com.healo.domain.base.entity.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.GenericGenerator;
 
-@Entity
-@Data
+import java.util.UUID;
+
+@Entity(name = "user")
+@Table(name = "user")
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor
+@Builder
+@ToString
+@Getter
 public class User extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //기본 키 생성을 데이터베이스에 위임한다.
-    private Long id;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "BINARY(16)")
+    private UUID id;
+
+    @Column(nullable = false)
+    private RoleType role = RoleType.USER;
+
+    @Column(nullable = false)
+    private String name;
+
+    @Column(unique = true, nullable = false)
+    private String phoneNumber;
+
+    @Column(nullable = false)
+    private String birthday;
+
+    @Column(unique = true, nullable = false)
+    private String userId;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Column(name = "service_check", nullable = false)
+    @ColumnDefault("0")
+    private int serviceCheck;
+
+    @Column(name = "personal_check", nullable = false)
+    @ColumnDefault("0")
+    private int personalCheck;
+
 
     
 }
