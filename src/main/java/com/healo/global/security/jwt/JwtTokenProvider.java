@@ -3,7 +3,7 @@ package com.healo.global.security.jwt;
 //import com.hana.api.auth.dto.response.AuthResponseDto;
 //import com.hana.api.user.dto.response.UserResponseDto;
 
-import com.healo.domain.user.dto.response.LoginResponseDto;
+import com.healo.domain.user.dto.response.LoginResDto;
 import com.healo.domain.user.service.CustomUserDetails;
 import com.healo.domain.user.service.CustomUserDetailsService;
 import io.jsonwebtoken.*;
@@ -54,7 +54,7 @@ public class JwtTokenProvider {
     }
 
     // 유저 정보를 이용해 AccessToken과 RefreshToken을 생성하는 메서드
-    public LoginResponseDto generateToken(Authentication authentication) {
+    public LoginResDto generateToken(Authentication authentication) {
 
         // 권한 가져오기
         String authorities = authentication.getAuthorities().stream()
@@ -83,7 +83,7 @@ public class JwtTokenProvider {
 
         log.info("[createRefreshToken] 리프레쉬 토큰 생성 완료: {}", refreshToken);
 
-        return LoginResponseDto.builder()
+        return LoginResDto.builder()
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)
                 .build();
