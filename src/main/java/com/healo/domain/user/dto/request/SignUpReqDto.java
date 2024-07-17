@@ -40,16 +40,16 @@ public class SignUpReqDto {
     @NotNull(message = "개인정보 수집 동의여부를 입력하세요.")
     private int personalCheck; // 개인정보 이용동의
 
-    public User toEntity() {
+    public User toEntity(String encryptedPassword, RoleType role) {
         return User.builder()
                 .name(userName)
                 .phoneNumber(phoneNumber)
                 .birthday(birthday)
                 .userId(userId)
-                .password(password)
+                .password(encryptedPassword)
                 .serviceCheck(serviceCheck)
                 .personalCheck(personalCheck)
-                .role(RoleType.USER).build();
+                .role(role).build();
     }
 
 }
