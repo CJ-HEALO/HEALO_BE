@@ -1,5 +1,6 @@
 package com.healo.domain.user.dto.request;
 
+import com.healo.domain.user.entity.Gender;
 import com.healo.domain.user.entity.RoleType;
 import com.healo.domain.user.entity.User;
 import jakarta.validation.constraints.NotEmpty;
@@ -34,6 +35,12 @@ public class SignUpReqDto {
     @NotEmpty(message = "패스워드를 입력하세요.")
     private String password; // 유저 패스워드
 
+    @NotEmpty(message = "성별을 입력하세요.")
+    private Gender gender;
+
+    @NotEmpty(message = "직무를 입력하세요.")
+    private String userWork;
+
     @NotNull(message = "필수 이용약관 동의여부를 입력하세요.")
     private int serviceCheck; // 서비스 이용동의
 
@@ -46,6 +53,8 @@ public class SignUpReqDto {
                 .phoneNumber(phoneNumber)
                 .birthday(birthday)
                 .userId(userId)
+                .userWork(userWork)
+                .gender(gender)
                 .password(encryptedPassword)
                 .serviceCheck(serviceCheck)
                 .personalCheck(personalCheck)

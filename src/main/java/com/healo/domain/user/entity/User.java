@@ -35,11 +35,20 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private String birthday;
 
+    @Column(nullable = false)
+    private Gender gender;
+
     @Column(unique = true, nullable = false)
     private String userId;
 
     @Column(nullable = false)
     private String password;
+
+    @Column
+    private String userThreshold;
+
+    @Column
+    private String userWork;
 
     @Column(name = "service_check", nullable = false)
     @ColumnDefault("0")
