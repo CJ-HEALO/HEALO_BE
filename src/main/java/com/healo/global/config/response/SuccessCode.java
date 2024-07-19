@@ -16,7 +16,13 @@ public enum SuccessCode {
     USER_REGISTER_CHECK_EMAIL_SUCCESS(OK, "이메일 중복 확인 성공"),
     USER_REGISTER_CHECK_ID_SUCCESS(OK, "아이디 중복 확인 성공"),
     USER_REGISTER_SUCCESS(CREATED, "회원가입 성공"),
-    USER_LOGIN_SUCCESS(OK, "로그인 성공");
+    USER_LOGIN_SUCCESS(OK, "로그인 성공"),
+    USER_FIND_SUCCESS(OK,"유저 전체 조회성공"),
+
+
+    //HeartRate
+    HeartRate_SAVE_SUCCESS(OK,"심박수 저장 성공")
+    ;
 
 
 

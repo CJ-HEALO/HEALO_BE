@@ -26,8 +26,7 @@ import java.util.stream.Collectors;
 
 import static com.healo.global.config.error.ErrorCode.USER_LOGIN_INCORRECT;
 import static com.healo.global.config.error.ErrorCode.USER_REGISTER_VALIDATION_FAIL;
-import static com.healo.global.config.response.SuccessCode.USER_LOGIN_SUCCESS;
-import static com.healo.global.config.response.SuccessCode.USER_REGISTER_SUCCESS;
+import static com.healo.global.config.response.SuccessCode.*;
 
 @Service
 @RequiredArgsConstructor
@@ -84,6 +83,6 @@ public class UserService {
         List<UserListResDto> maskedUsers = userList.stream()
                 .map(user -> new UserListResDto(user.getUserId(), user.getName(), user.getPhoneNumber()))
                 .toList();
-        return ApiResponse.success(USER_LOGIN_SUCCESS, userRepository.findAll());
+        return ApiResponse.success(USER_FIND_SUCCESS, maskedUsers);
     }
 }
