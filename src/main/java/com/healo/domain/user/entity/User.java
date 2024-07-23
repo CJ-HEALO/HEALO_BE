@@ -24,6 +24,7 @@ public class User extends BaseEntity {
     private UUID id;
 
     @Column(nullable = false)
+    @Builder.Default
     private RoleType role = RoleType.USER;
 
     @Column(nullable = false)
